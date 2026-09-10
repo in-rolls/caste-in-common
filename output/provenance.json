@@ -1,0 +1,26 @@
+{
+  "source_files": [
+    {
+      "file": "visit1_level_01_block_1_identification_of_sample_household.csv.gz",
+      "sha256": "e2fb5522f7dcb195e0bbdb29b2a4f7f8f6bd88af0190ae380ece0b4b064bef7f"
+    },
+    {
+      "file": "visit1_level_03_block_4_demographic_and_other_particulars_of_household_members.csv.gz",
+      "sha256": "927646284100a9bd2c9e7a91d85f14527ab2e8447bd9fbfc39bd2b60cbf79c2f"
+    },
+    {
+      "file": "visit1_level_04_block_5_particulars_of_land_of_the_household_and_its_operation_during_the_period_july_december_2018.csv.gz",
+      "sha256": "50783fe1c7259f1225adb76ee2cdb873db6b4c6edf98fa2507837215720ad2a2"
+    }
+  ],
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1",
+    "pyarrow": "25.0.1"
+  },
+  "rows": 58040,
+  "zero_weight_rows": 5,
+  "land_missing": 62,
+  "bootstrap": "Approximate 95% pointwise percentile intervals: 999 PSU bootstrap draws within states, fixed household weights; seed 20260910. This approximation does not reproduce NSS substratification, later sampling stages, or finite-population corrections. It is not an official NSS variance estimate."
+}
