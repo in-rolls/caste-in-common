@@ -1,0 +1,16 @@
+[
+  {
+    "file": "data/external/telangana-volume4.pdf",
+    "url": "https://des.telangana.gov.in/publications/SEEEPC/SEEEPC%20Volume-04.pdf",
+    "retrieved": "2026-09-10",
+    "bytes": 12066372,
+    "sha256": "611ce34b786e911e90baec80469538d2d36b0df31ae47901f99aad28081cf4a3"
+  },
+  {
+    "file": "data/external/telangana-iewg2.pdf",
+    "url": "https://des.telangana.gov.in/publications/SEEEPC/SEEEPC-IEWG%20Volume-2.pdf",
+    "retrieved": "2026-09-10",
+    "bytes": 13576521,
+    "sha256": "692e33df782e5cceda685ea7fe3b57396e27ee684d44fbb6caf381cd0c97193f"
+  }
+]

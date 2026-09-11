@@ -17,6 +17,9 @@ They include reported zero holdings and use household survey weights.
 
 ![The same threshold for each group](output/rural_india_thresholds.png)
 
+[Income, jati and overlap methods](docs/informativeness.md) ·
+[IHDS income results and sorted label comparisons](output/ihds-first-look.md) ·
+[IHDS ingestion audit](docs/ihds-audit.md) ·
 [Research design](docs/design.md) · [Source inventory and audit](docs/sources.md) ·
 [Data dictionary and join contract](docs/data-dictionary.md)
 
@@ -26,6 +29,8 @@ They include reported zero holdings and use household survey weights.
 make setup
 make ci
 make pilot NSS_DIR=../land/data/nss77_sch331/csv
+.venv/bin/python -m pip install -e '.[ihds]'
+make ihds
 ```
 
 Python 3.11 or later. `make ci-docker` runs formatting checks, lint and tests in a
@@ -50,11 +55,26 @@ note is the source of result tables; figures and prose share computed outputs.
 - Threshold differences and approximate PSU-bootstrap intervals; see the design
   for the approximation's limits and missing-outcome bounds.
 
-The first pilot measures land and consumption, not earnings or monetary wealth.
-The source audit identifies locally available IHDS income data for the next
-stage, AIDIS for monetary wealth, Bihar land records for finer caste labels, and
-what must be established before SHRUG or ration cards can answer these questions.
+The NSS pilot measures land and consumption. The IHDS-II extension measures
+annual net household income per person, reported jati-label distributions,
+within-state pairwise probabilities, reverse tail composition, and prediction
+on held-out PSUs. It extends the ingestion conventions in `../land/scripts/97`
+and verifies common fields against that project’s existing household extract.
+
+`make ihds` reads the existing ICPSR R household release, writes an ignored
+Parquet extract, and regenerates `output/ihds_*` and `output/ihds-first-look.md`.
+Override `IHDS_SOURCE` to use another location. The full prediction run evaluates
+three split seeds and three smoothing strengths; no new data download is needed.
+
+Detailed responses are normalized for typography, not harmonized into verified
+jatis. Their predictive results are a measurement pilot, not a conclusion about
+all information contained in jati. The research memo documents the next sources:
+REDS, Bihar/Telangana surveys, HCES, AIDIS, CPHS and VDSA.
 
 These are descriptive comparisons. They do not estimate the causal effect of
-caste or settle a policy question. `Others` is the survey's residual category,
-not a verified upper-caste classification. Household shares are not person shares.
+caste or settle a policy question. `Others` is a residual category, not a verified upper-caste classification;
+its meaning differs between NSS and IHDS. Household shares are not person shares.
+
+The separate [Passing Glance synthesis](../passing-glance/README.md) connects
+these economic distributions to the information a stranger can obtain from
+names, visible material circumstances and context.

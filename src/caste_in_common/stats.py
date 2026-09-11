@@ -65,3 +65,23 @@ def binned_overlap(a, wa, b, wb, edges):
             np.histogram(b, bins=edges, weights=wb)[0],
         ).sum()
     )
+
+
+def binned_superiority_bounds(mass_a, mass_b):
+    """Sharp bounds on P(A>B), and tie-adjusted AUC, from ordered interval bins.
+
+    Both distributions must use the same nonoverlapping ordered bins, each
+    admitting at least two distinct values. Same-bin pairs are unresolved, not
+    observed ties. Bounds for exact-value bins require their known ties instead.
+    """
+    a = np.asarray(mass_a, dtype=float)
+    b = np.asarray(mass_b, dtype=float)
+    if a.ndim != 1 or a.shape != b.shape or not len(a):
+        raise ValueError("Expected matching nonempty bin-mass vectors")
+    if not np.isfinite(a).all() or not np.isfinite(b).all():
+        raise ValueError("Nonfinite bin masses")
+    if (a < 0).any() or (b < 0).any() or a.sum() <= 0 or b.sum() <= 0:
+        raise ValueError("Invalid bin masses")
+    a, b = a / a.sum(), b / b.sum()
+    lower = float(a @ np.r_[0, b.cumsum()[:-1]])
+    return lower, min(1.0, lower + float(a @ b))

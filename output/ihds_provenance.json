@@ -1,0 +1,13 @@
+{
+  "source": "/Users/soodoku/Documents/GitHub/land/data/ihds2/ICPSR_36151/DS0002/36151-0002-Data.rda",
+  "sha256": "a8fa5dd98bf020d4d60aea0284856b2eb76e0349c13a77d2f2b329ad6eb6b654",
+  "households": 42152,
+  "bihar_households": 1547,
+  "psus": 2462,
+  "negative_income_households": 452,
+  "zero_income_households": 166,
+  "missing_broad_group": 86,
+  "blank_jati_labels": 576,
+  "unique_normalized_jati_labels": 8312,
+  "eligible_state_label_cells": 44
+}

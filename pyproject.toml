@@ -6,6 +6,7 @@ requires-python = ">=3.11"
 dependencies = ["numpy>=1.26", "pandas>=2.2", "matplotlib>=3.8", "pyarrow>=18"]
 
 [project.optional-dependencies]
+ihds = ["pyreadr>=0.5.6"]
 dev = ["pytest>=8", "black", "isort", "flake8"]
 
 [build-system]
